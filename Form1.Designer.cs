@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             this.label1 = new System.Windows.Forms.Label();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.informacionClientes = new System.Windows.Forms.DataGridView();
             this.button1 = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.informacionClientes)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -44,13 +44,13 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Ingreso Condominio";
             // 
-            // dataGridView1
+            // informacionClientes
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(154, 65);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(364, 192);
-            this.dataGridView1.TabIndex = 1;
+            this.informacionClientes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.informacionClientes.Location = new System.Drawing.Point(152, 66);
+            this.informacionClientes.Name = "informacionClientes";
+            this.informacionClientes.Size = new System.Drawing.Size(364, 192);
+            this.informacionClientes.TabIndex = 1;
             // 
             // button1
             // 
@@ -60,6 +60,7 @@
             this.button1.TabIndex = 2;
             this.button1.Text = "Listar Resumen";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // Form1
             // 
@@ -68,12 +69,12 @@
             this.BackColor = System.Drawing.Color.LightGray;
             this.ClientSize = new System.Drawing.Size(699, 484);
             this.Controls.Add(this.button1);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.informacionClientes);
             this.Controls.Add(this.label1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "Form1";
             this.Text = "Pagina Principal";
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.informacionClientes)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -82,7 +83,7 @@
         #endregion
 
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView informacionClientes;
         private System.Windows.Forms.Button button1;
     }
 }
