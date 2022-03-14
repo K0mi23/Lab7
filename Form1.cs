@@ -23,7 +23,7 @@ namespace Lab7
 
         private void CargarPropiedades()
         {
-            FileStream stream = new FileStream(@"Propiedades.txt");
+            FileStream stream = new FileStream("Propiedades.txt", FileMode.OpenOrCreate, FileAccess.Read);
             StreamReader reader = new StreamReader(stream);
 
             while(reader.Peek()> -1)
@@ -41,7 +41,7 @@ namespace Lab7
 
         private void CargarPropietarios()
         {
-            FileStream stream = new FileStream(@"Propietarios.txt");
+            FileStream stream = new FileStream("Propietarios.txt", FileMode.OpenOrCreate, FileAccess.Read);
             StreamReader reader = new StreamReader(stream);
 
             while (reader.Peek() > -1)
@@ -56,27 +56,51 @@ namespace Lab7
 
             reader.Close();
         }
-
-
-        private void button1_Click(object sender, EventArgs e)
+        
+        private void Form1_Load(object sender, EventArgs e)
         {
             CargarPropietarios();
             CargarPropiedades();
 
-            for(int i=0; i<priopiedades.Count; i++)
+            for (int i = 0; i < priopiedades.Count; i++)
             {
-                for(int j=0; j< propietario.Count; j++)
+                for (int j = 0; j < propietario.Count; j++)
                 {
-                    if(priopiedades[i].dpi== propietario[j].dpi)
+                    if (priopiedades[i].dpi == propietario[j].dpi)
                     {
                         Resumen datosResumen = new Resumen();
-                        datosResumen.nombre=propietario[j].nombre;
+                        datosResumen.nombre = propietario[j].nombre;
                         datosResumen.apellido = propietario[j].apellido;
                         datosResumen.numcasa = priopiedades[i].numcasa;
                         datosResumen.cuota = priopiedades[i].cuota;
+
+                        resumen.Add(datosResumen);
                     }
                 }
             }
+            CargarLista();
+        }
+
+        private void CargarLista()
+        {
+            informacionClientes.DataSource = null;
+            informacionClientes.Refresh();
+            informacionClientes.DataSource = resumen;
+            informacionClientes.Refresh();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            resumen=resumen.OrderBy(c => c.cuota).ToList();
+            CargarLista();
+            button2.Enabled = true;
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {   int contados= resumen.Count();
+            Menor.Text = resumen[0].cuota.ToString();
+            Mayor.Text= resumen[contados-1].cuota.ToString();
+            Nombre.Text = resumen[contados - 1].nombre+", "+ resumen[contados-1].apellido;
         }
     }
 }
